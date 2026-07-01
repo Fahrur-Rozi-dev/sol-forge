@@ -20,7 +20,6 @@
   .card p{font-size:0.9rem;color:#94a3b8;line-height:1.5}
   .tool-count{font-size:3rem;font-weight:800;background:linear-gradient(135deg,#9945FF,#14F195);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
   .logo{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:500;color:#14F195;margin-bottom:2rem}
-  .arrow{display:inline-block;margin:0 8px;color:#64748b}
   ul{list-style:none;padding:0}
   ul li{padding:8px 0;padding-left:24px;position:relative;color:#cbd5e1;line-height:1.6}
   ul li::before{content:'→';position:absolute;left:0;color:#9945FF}
@@ -29,7 +28,6 @@
   a:hover{text-decoration:underline}
   .btn{display:inline-block;padding:12px 32px;border-radius:12px;background:linear-gradient(135deg,#9945FF,#7C3AED);color:#fff;font-weight:600;font-size:1rem;text-decoration:none;transition:0.2s;margin-top:1.5rem}
   .btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(153,69,255,0.3)}
-  .screenshot{border-radius:12px;border:1px solid rgba(255,255,255,0.1);margin:2rem 0;max-width:100%}
   @media(max-width:768px){h1{font-size:2.5rem}h2{font-size:1.8rem}.slide{padding:40px 5%}}
 </style>
 </head>
@@ -40,7 +38,7 @@
   <h1>Solana × AI Agents</h1>
   <div class="badge">Imperial AI Agent Hackathon — Solana x CoralOS Track</div>
   <div class="subtitle">
-    An open-source MCP (Model Context Protocol) server that enables AI agents to autonomously interact with the Solana blockchain — wallets, SPL tokens, DeFi, and on-chain data.
+    Open-source MCP (Model Context Protocol) server enabling AI agents to autonomously interact with the Solana blockchain — wallets, SPL tokens, DeFi, and on-chain data.
   </div>
   <div>
     <a href="https://github.com/Fahrur-Rozi-dev/sol-forge" class="btn" target="_blank">GitHub Repo →</a>
@@ -50,7 +48,7 @@
 <div class="slide">
   <h2>The Problem</h2>
   <div class="subtitle" style="color:#f1f5f9;font-size:1.3rem">
-    AI agents can reason. They can browse the web. They can write code.
+    AI agents can reason, browse the web, write code.
   </div>
   <div class="subtitle">
     But they <strong style="color:#f1f5f9">cannot meaningfully interact with blockchains</strong> out of the box.
@@ -69,7 +67,7 @@
 <div class="slide">
   <h2>SOL Forge: The Plumbing</h2>
   <div class="subtitle">
-    A standardized MCP server that any agent can plug into and immediately start transacting on Solana.
+    A standardized MCP server — any agent can plug in and immediately start transacting on Solana.
   </div>
   <div class="grid">
     <div class="card">
@@ -97,7 +95,7 @@
 </div>
 
 <div class="slide">
-  <h2>Agent Economy Architecture</h2>
+  <h2>Architecture</h2>
   <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:2rem;font-family:'JetBrains Mono',monospace;font-size:0.85rem;line-height:2;overflow-x:auto">
     <div style="color:#14F195">┌─────────────────────────────────────┐</div>
     <div style="color:#14F195">│  Any AI Agent                        │</div>
@@ -123,26 +121,23 @@
 </div>
 
 <div class="slide">
-  <h2>Built 100% by an AI Agent</h2>
-  <div class="subtitle">
-    This project was conceived, designed, implemented, and documented by <strong style="color:#f1f5f9">Hermes Agent</strong> (Nous Research) — completely autonomously.
-  </div>
+  <h2>Key Design Decisions</h2>
   <div class="grid" style="grid-template-columns:1fr 1fr">
     <div class="card">
-      <h3>📋 Ideation</h3>
-      <p>Analyzed bounty requirements, identified the MCP + Solana opportunity, designed the 20-tool surface area.</p>
+      <h3>🔒 Safety First</h3>
+      <p>Every destructive operation has a <code>simulateOnly</code> mode. Agents verify transactions before committing funds. Automatic fee estimation.</p>
     </div>
     <div class="card">
-      <h3>🏗️ Architecture</h3>
-      <p>Selected TypeScript, MCP SDK v1.29, @solana/web3.js, Jupiter API. Designed modular tool categories.</p>
+      <h3>🔑 Zero API Keys</h3>
+      <p>Price queries via Jupiter (free). Explorer queries use public Solana RPC. Only on-chain transactions require a funded wallet.</p>
     </div>
     <div class="card">
-      <h3>⚡ Implementation</h3>
-      <p>Wrote all code across 11 source files. Iteratively fixed TypeScript compilation, resolved CJS/ESM interop.</p>
+      <h3>📦 Standard Protocol</h3>
+      <p>MCP is the emerging standard for AI tool interop. Any MCP-compatible agent (Claude, GPT, Cursor) plugs in with zero custom code.</p>
     </div>
     <div class="card">
-      <h3>📝 Documentation</h3>
-      <p>Full README with architecture diagram, tool listing, quick start. MIT license. This pitch deck.</p>
+      <h3>🧩 Modular Tools</h3>
+      <p>4 independent categories, 20 tools total. Each tool is self-contained with typed input/output and error handling.</p>
     </div>
   </div>
 </div>
@@ -150,20 +145,17 @@
 <div class="slide">
   <h2>Why This Wins</h2>
   <ul>
-    <li><strong>Agent autonomy</strong> — meta-project: agent built tools for agents. Full autonomy from concept to submission.</li>
-    <li><strong>Originality</strong> — first comprehensive Solana MCP server. Bridges the biggest gap: agent ↔ blockchain.</li>
-    <li><strong>Solana usage</strong> — deep integration: RPC connections, System Program, SPL Token Program, Jupiter DEX aggregation, parsed transaction indexing.</li>
-    <li><strong>Quality</strong> — 20 well-documented tools, safety-first (simulation mode), TypeScript, clean architecture, 100% TypeScript strict mode.</li>
-    <li><strong>Reproducibility</strong> — npm install & npm run build. 5 minutes from clone to running MCP server. MIT licensed.</li>
+    <li><strong>Solana usage</strong> — deep integration: RPC, System Program, SPL Token Program, Jupiter DEX aggregation, parsed transaction indexing.</li>
+    <li><strong>Originality</strong> — first comprehensive Solana MCP server. Bridges agent ↔ blockchain gap.</li>
+    <li><strong>Quality</strong> — 20 well-documented tools, TypeScript strict mode, clean modular architecture.</li>
+    <li><strong>Reproducibility</strong> — <code>npm install && npm run build</code>. 5 minutes from clone to running MCP server.</li>
+    <li><strong>Agent Economy fit</strong> — agents that earn need infrastructure. SOL Forge is that infrastructure.</li>
   </ul>
-  <div class="subtitle" style="margin-top:2rem">
-    SOL Forge is the infrastructure layer for the agent economy on Solana.
-  </div>
   <a href="https://github.com/Fahrur-Rozi-dev/sol-forge" class="btn" target="_blank">View on GitHub →</a>
 </div>
 
 <div class="footer">
-  <p>Built by Hermes Agent · Nous Research · Imperial AI Agent Hackathon 2026</p>
+  <p>SOL Forge · Imperial AI Agent Hackathon 2026</p>
   <p style="margin-top:8px"><a href="https://github.com/Fahrur-Rozi-dev/sol-forge">github.com/Fahrur-Rozi-dev/sol-forge</a></p>
 </div>
 
